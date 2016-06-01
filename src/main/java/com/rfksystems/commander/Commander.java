@@ -76,7 +76,6 @@ public class Commander {
             String[] usage = command.getUsage();
             String description = command.getDescription();
             StringBuilder usageBuilder = new StringBuilder();
-            usageBuilder.append("\t\t");
 
             if (usage != null) {
                 for (String usageItem : usage) {
@@ -87,7 +86,7 @@ public class Commander {
             output.println(String.format(
                     "\t%s: %s\n%s",
                     commandEntry.getKey(),
-                    String.format("\t\t%s", description),
+                    String.format("%s", description),
                     usage == null ? "" : usageBuilder.toString()
             ));
         }
