@@ -69,26 +69,20 @@ public class Commander {
         if (this.appDescription != null) {
             output.println(this.appDescription);
         }
-        output.println("Usage: ");
+        output.println("Usage:");
 
         for (Map.Entry<String, Command> commandEntry : commands.entrySet()) {
             Command command = commandEntry.getValue();
             String[] usage = command.getUsage();
             String description = command.getDescription();
-            StringBuilder usageBuilder = new StringBuilder();
+
+            output.println("\t" + commandEntry.getKey().concat(": ").concat(description));
 
             if (usage != null) {
                 for (String usageItem : usage) {
-                    usageBuilder.append("\n\t\t").append(usageItem);
+                    output.println("\t\t" + usageItem);
                 }
             }
-
-            output.println(String.format(
-                    "\t%s: %s\n%s",
-                    commandEntry.getKey(),
-                    String.format("%s", description),
-                    usage == null ? "" : usageBuilder.toString()
-            ));
         }
     }
 
