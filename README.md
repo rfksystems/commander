@@ -2,7 +2,7 @@
 
 Simple command line option parser and GIT-alike command manager.
 
-[![Release](https://jitpack.io/v/com.github.rfksystems/commander.svg?style=flat-square)](https://jitpack.io/#com.github.rfksystems/commander)
+[![Release](https://jitpack.io/v/com.github.rfksystems/commander.svg?style=flat-square)](https://jitpack.io/#com.github.rfksystems/commander) [![Build Status](https://travis-ci.org/rfksystems/commander.svg?branch=master)](https://travis-ci.org/rfksystems/commander)
 
 ## Example usage
 

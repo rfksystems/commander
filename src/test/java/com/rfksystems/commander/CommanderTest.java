@@ -52,7 +52,7 @@ public class CommanderTest {
 
     @Test
     public void it_accepts_and_executes_command_with_specified_print_stream() throws Exception {
-        PrintStream printStream = Mockito.mock(PrintStream.class);
+        final PrintStream printStream = Mockito.mock(PrintStream.class);
 
         commander.addCommand(new Command() {
             @Override

@@ -65,7 +65,7 @@ public class Commander {
         printHelp(System.out);
     }
 
-    public void printHelp(PrintStream output) {
+    public void printHelp(final PrintStream output) {
         if (this.appDescription != null) {
             output.println(this.appDescription);
         }
