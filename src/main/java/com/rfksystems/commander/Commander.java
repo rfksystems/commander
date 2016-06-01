@@ -76,7 +76,7 @@ public class Commander {
             String[] usage = command.getUsage();
             String description = command.getDescription();
             StringBuilder usageBuilder = new StringBuilder();
-            usageBuilder.append("\n\t\t");
+            usageBuilder.append("\t\t");
 
             if (usage != null) {
                 for (String usageItem : usage) {
