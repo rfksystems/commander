@@ -85,14 +85,11 @@ public class Commander {
             }
 
             output.println(String.format(
-                    "\t%s: %s",
+                    "\t%s: %s\n%s",
                     commandEntry.getKey(),
+                    String.format("\t\t%s", description),
                     usage == null ? "" : usageBuilder.toString()
             ));
-
-            if (null != description) {
-                output.println(String.format("\t\t%s", description));
-            }
         }
     }
 
