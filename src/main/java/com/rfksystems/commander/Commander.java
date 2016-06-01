@@ -10,7 +10,7 @@ import com.rfksystems.commander.exception.RuntimeArgumentException;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.function.BiConsumer;
+import java.util.Map;
 
 public class Commander {
     private HashMap<String, Command> commands = new HashMap<>();
@@ -70,21 +70,21 @@ public class Commander {
             output.println(this.appDescription);
         }
         output.println("Usage: ");
-        commands.forEach(new BiConsumer<String, Command>() {
-            public void accept(String s, Command command) {
-                String usage = command.getUsage();
-                String description = command.getDescription();
 
-                output.println(String.format(
-                        "\t%s: %s",
-                        s,
-                        usage == null ? "" : usage
-                ));
-                if (null != description) {
-                    output.println(String.format("\t\t%s", description));
-                }
+        for (Map.Entry<String, Command> commandEntry : commands.entrySet()) {
+            Command command = commandEntry.getValue();
+            String usage = command.getUsage();
+            String description = command.getDescription();
+
+            output.println(String.format(
+                    "\t%s: %s",
+                    commandEntry.getKey(),
+                    usage == null ? "" : usage
+            ));
+            if (null != description) {
+                output.println(String.format("\t\t%s", description));
             }
-        });
+        }
     }
 
     public void setDefaultCommand(Command defaultCommand) {
