@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class Commander {
     private HashMap<String, Command> commands = new HashMap<>();
@@ -75,11 +76,18 @@ public class Commander {
             Command command = commandEntry.getValue();
             String[] usage = command.getUsage();
             String description = command.getDescription();
+            StringBuilder usageBuilder = new StringBuilder();
+            usageBuilder.append("\n\t\t");
+            if(usage != null) {
+                for(String usageItem : usage) {
+                    usageBuilder.append("\n\t\t").append(usageItem);
+                }
+            }
 
             output.println(String.format(
                     "\t%s: %s",
                     commandEntry.getKey(),
-                    usage == null ? "" : "\n\t\t" + String.join("\n\t\t", usage)
+                    usage == null ? "" :  usageBuilder.toString()
             ));
             if (null != description) {
                 output.println(String.format("\t\t%s", description));
