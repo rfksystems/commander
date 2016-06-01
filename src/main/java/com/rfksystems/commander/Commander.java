@@ -73,13 +73,13 @@ public class Commander {
 
         for (Map.Entry<String, Command> commandEntry : commands.entrySet()) {
             Command command = commandEntry.getValue();
-            String usage = command.getUsage();
+            String[] usage = command.getUsage();
             String description = command.getDescription();
 
             output.println(String.format(
                     "\t%s: %s",
                     commandEntry.getKey(),
-                    usage == null ? "" : usage
+                    usage == null ? "" : "\n\t\t" + String.join("\n\t\t", usage)
             ));
             if (null != description) {
                 output.println(String.format("\t\t%s", description));

@@ -19,7 +19,7 @@ public class HelpCommand implements Command {
         return "help";
     }
 
-    public String getUsage() {
+    public String[] getUsage() {
         return null;
     }
 

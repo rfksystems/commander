@@ -32,7 +32,7 @@ public class CommanderTest {
             }
 
             @Override
-            public String getUsage() {
+            public String[] getUsage() {
                 return null;
             }
 
@@ -61,7 +61,7 @@ public class CommanderTest {
             }
 
             @Override
-            public String getUsage() {
+            public String[] getUsage() {
                 return null;
             }
 
@@ -89,7 +89,7 @@ public class CommanderTest {
             }
 
             @Override
-            public String getUsage() {
+            public String[] getUsage() {
                 return null;
             }
 

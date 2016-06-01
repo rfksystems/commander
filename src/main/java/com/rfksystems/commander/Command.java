@@ -8,7 +8,7 @@ import java.io.PrintStream;
 public interface Command {
     String getName();
 
-    String getUsage();
+    String[] getUsage();
 
     String getDescription();
 
