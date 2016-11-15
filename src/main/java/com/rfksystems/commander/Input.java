@@ -28,12 +28,8 @@ public class Input {
                 positional.add(arg);
             } else {
                 if (arg.contains("=")) {
-                    String[] split = arg.split("=");
-                    if (split.length > 2) {
-                        throw new InputParseException(String.format("Unexpected \"=\" while parsing \"%s\"", arg));
-                    } else {
-                        arguments.put(split[0], new InputArgument(split[1]));
-                    }
+                    String[] split = arg.split("=", 2);
+                    arguments.put(split[0], new InputArgument(split[1]));
                 } else {
                     arguments.put(arg, new InputArgument(null));
                 }

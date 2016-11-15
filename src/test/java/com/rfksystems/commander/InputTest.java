@@ -49,10 +49,13 @@ public class InputTest {
         assertNull(input.arguments.get("no_value").getString());
     }
 
-    @Test(expected = InputParseException.class)
-    public void it_throws_if_more_than_one_equals_in_arg() throws Exception {
-        new Input(new String[]{
-                "--value=yes=too-much"
+    @Test
+    public void it_properly_parses_more_than_one_equals() throws Exception {
+        Input input = new Input(new String[]{
+                "--value=yes=more"
         });
+
+        assertEquals(1, input.arguments.size());
+        assertEquals("yes=more", input.arguments.get("value").getString());
     }
 }
