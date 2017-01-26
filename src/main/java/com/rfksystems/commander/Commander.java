@@ -32,6 +32,19 @@ public class Commander {
         return this;
     }
 
+    public Commander removeCommand(Command command) {
+        String commandName = command.getName();
+        if (!commands.containsKey(commandName)) {
+            return this;
+        }
+        this.commands.remove(commandName);
+        return this;
+    }
+
+    public boolean hasCommand(Command command){
+        return this.commands.containsKey(command.getName());
+    }
+
     public int execute(String[] args) throws NoCommandGivenException, CommandUnknownException, InputParseException, RuntimeArgumentException {
         return this.execute(args, System.out);
     }

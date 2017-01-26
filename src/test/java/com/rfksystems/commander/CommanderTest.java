@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 
 import java.io.PrintStream;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class CommanderTest {
     private Commander commander;
@@ -106,5 +106,35 @@ public class CommanderTest {
 
         commander.setDefaultCommand(mockCommand);
         commander.execute(new String[]{});
+    }
+
+    @Test
+    public void it_removes_command() throws Exception {
+        Command mockCommand = new Command() {
+            @Override
+            public String getName() {
+                return "command id";
+            }
+
+            @Override
+            public String[] getUsage() {
+                return null;
+            }
+
+            @Override
+            public String getDescription() {
+                return null;
+            }
+
+            @Override
+            public int execute(Input input, PrintStream output) throws RuntimeArgumentException {
+                return 0;
+            }
+        };
+
+        commander.addCommand(mockCommand);
+        assertTrue(commander.hasCommand(mockCommand));
+        commander.removeCommand(mockCommand);
+        assertFalse(commander.hasCommand(mockCommand));
     }
 }
