@@ -9,9 +9,9 @@ import com.rfksystems.commander.exception.RuntimeArgumentException;
 import java.io.PrintStream;
 
 public class HelpCommand implements Command {
-    private Commander commander;
+    private final Commander commander;
 
-    public HelpCommand(Commander commander) {
+    public HelpCommand(final Commander commander) {
         this.commander = commander;
     }
 
@@ -27,7 +27,7 @@ public class HelpCommand implements Command {
         return "Display command usage information";
     }
 
-    public int execute(Input input, PrintStream output) throws RuntimeArgumentException {
+    public int execute(final Input input, final PrintStream output) throws RuntimeArgumentException {
         this.commander.printHelp(output);
         return 0;
     }

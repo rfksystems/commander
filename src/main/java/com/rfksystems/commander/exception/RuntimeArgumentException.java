@@ -1,22 +1,27 @@
 package com.rfksystems.commander.exception;
 
-public class RuntimeArgumentException extends Exception {
+public class RuntimeArgumentException extends CommanderException {
     public RuntimeArgumentException() {
     }
 
-    public RuntimeArgumentException(String message) {
+    public RuntimeArgumentException(final String message) {
         super(message);
     }
 
-    public RuntimeArgumentException(String message, Throwable cause) {
+    public RuntimeArgumentException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
-    public RuntimeArgumentException(Throwable cause) {
+    public RuntimeArgumentException(final Throwable cause) {
         super(cause);
     }
 
-    public RuntimeArgumentException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public RuntimeArgumentException(
+            final String message,
+            final Throwable cause,
+            final boolean enableSuppression,
+            final boolean writableStackTrace
+    ) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

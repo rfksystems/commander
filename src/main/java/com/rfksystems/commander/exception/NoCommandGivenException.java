@@ -1,22 +1,27 @@
 package com.rfksystems.commander.exception;
 
-public class NoCommandGivenException extends Exception {
+public class NoCommandGivenException extends CommanderException {
     public NoCommandGivenException() {
     }
 
-    public NoCommandGivenException(String message) {
+    public NoCommandGivenException(final String message) {
         super(message);
     }
 
-    public NoCommandGivenException(String message, Throwable cause) {
+    public NoCommandGivenException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
-    public NoCommandGivenException(Throwable cause) {
+    public NoCommandGivenException(final Throwable cause) {
         super(cause);
     }
 
-    public NoCommandGivenException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public NoCommandGivenException(
+            final String message,
+            final Throwable cause,
+            final boolean enableSuppression,
+            final boolean writableStackTrace
+    ) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

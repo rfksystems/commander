@@ -1,22 +1,27 @@
 package com.rfksystems.commander.exception;
 
-public class CommandUnknownException extends Exception {
+public class CommandUnknownException extends CommanderException {
     public CommandUnknownException() {
     }
 
-    public CommandUnknownException(String message) {
+    public CommandUnknownException(final String message) {
         super(message);
     }
 
-    public CommandUnknownException(String message, Throwable cause) {
+    public CommandUnknownException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
-    public CommandUnknownException(Throwable cause) {
+    public CommandUnknownException(final Throwable cause) {
         super(cause);
     }
 
-    public CommandUnknownException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public CommandUnknownException(
+            final String message,
+            final Throwable cause,
+            final boolean enableSuppression,
+            final boolean writableStackTrace
+    ) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

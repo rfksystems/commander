@@ -12,5 +12,5 @@ public interface Command {
 
     String getDescription();
 
-    int execute(Input input, PrintStream output) throws RuntimeArgumentException;
+    int execute(final Input input, final PrintStream output) throws RuntimeArgumentException;
 }

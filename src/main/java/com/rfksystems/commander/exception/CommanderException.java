@@ -1,22 +1,22 @@
 package com.rfksystems.commander.exception;
 
-public class InputParseException extends CommanderException {
-    public InputParseException() {
+public abstract class CommanderException extends Exception{
+    public CommanderException() {
     }
 
-    public InputParseException(final String message) {
+    public CommanderException(final String message) {
         super(message);
     }
 
-    public InputParseException(final String message, final Throwable cause) {
+    public CommanderException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
-    public InputParseException(final Throwable cause) {
+    public CommanderException(final Throwable cause) {
         super(cause);
     }
 
-    public InputParseException(
+    public CommanderException(
             final String message,
             final Throwable cause,
             final boolean enableSuppression,
