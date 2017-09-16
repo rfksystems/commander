@@ -2,7 +2,7 @@
 
 Simple command line option parser and GIT-alike command manager for JDK7+.
 
-[![Release](https://jitpack.io/v/com.github.rfksystems/commander.svg?style=flat-square)](https://jitpack.io/#com.github.rfksystems/commander) [![Build Status](https://travis-ci.org/rfksystems/commander.svg?branch=master)](https://travis-ci.org/rfksystems/commander)
+[![Maven Central](https://img.shields.io/maven-central/v/com.rfksystems/commander.svg?style=flat-square)](http://mvnrepository.com/artifact/com.rfksystems/commander) [![Build Status](https://travis-ci.org/rfksystems/commander.svg?branch=master)](https://travis-ci.org/rfksystems/commander)
 
 ## Example usage
 
@@ -15,8 +15,8 @@ import com.rfksystems.commander.exception.*;
 import java.io.PrintStream;
 
 public class Main {
-    public static void main(String[] args) {
-        Commander commander = new Commander();
+    public static void main(final String[] args) {
+        final Commander commander = new Commander();
         commander.addCommand(new Command() {
             public String getName() {
                 return "hello";
@@ -31,7 +31,7 @@ public class Main {
             }
 
             public int execute(Input input, PrintStream output) throws RuntimeArgumentException {
-                String outputString = "Hello";
+                final String outputString = "Hello";
                 if (input.arguments.containsKey("world")) {
                     outputString = outputString.concat(" world!");
                 }
@@ -41,7 +41,7 @@ public class Main {
         });
         try {
             commander.execute(args, System.out);
-        } catch (NoCommandGivenException | CommandUnknownException | RuntimeArgumentException | InputParseException e) {
+        } catch (final NoCommandGivenException | CommandUnknownException | RuntimeArgumentException | InputParseException e) {
             e.printStackTrace();
         }
     }
@@ -53,32 +53,15 @@ public class Main {
 
 ### Maven
 
-Add the repository:
-
-```xml
-<repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
-
-Add the dependency:
-
+Available in Maven Central since 1.0.5
 
 ```xml
 <dependency>
-    <groupId>com.github.rfksystems</groupId>
+    <groupId>com.rfksystems</groupId>
     <artifactId>commander</artifactId>
     <version>${commander.version}</version>
 </dependency>
 ```
-
-### Other managers
-
-See [https://jitpack.io](https://jitpack.io)
-
 
 ### License
 

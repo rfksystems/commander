@@ -3,7 +3,7 @@ package com.rfksystems.commander;
 public class InputArgument {
     private String stringValue;
 
-    public InputArgument(String stringValue) {
+    public InputArgument(final String stringValue) {
         this.stringValue = stringValue;
     }
 
@@ -19,11 +19,11 @@ public class InputArgument {
         return stringValue.charAt(0);
     }
 
-    public String[] getValueList(String regex) {
+    public String[] getValueList(final String regex) {
         return stringValue.split(regex);
     }
 
-    public String[] getValueList(String regex, int limit) {
+    public String[] getValueList(final String regex, final int limit) {
         return stringValue.split(regex, limit);
     }
 
@@ -43,7 +43,7 @@ public class InputArgument {
     public double getDouble() throws NumberFormatException {
         try {
             return Double.valueOf(stringValue);
-        } catch (NullPointerException e) {
+        } catch (final NullPointerException e) {
             throw new NumberFormatException(e.getMessage());
         }
     }
@@ -51,7 +51,7 @@ public class InputArgument {
     public float getFloat() throws NumberFormatException {
         try {
             return Float.valueOf(stringValue);
-        } catch (NullPointerException e) {
+        } catch (final NullPointerException e) {
             throw new NumberFormatException(e.getMessage());
         }
     }

@@ -28,13 +28,12 @@ public class Input {
                 positional.add(arg);
             } else {
                 if (arg.contains("=")) {
-                    String[] split = arg.split("=", 2);
+                    final String[] split = arg.split("=", 2);
                     arguments.put(split[0], new InputArgument(split[1]));
                 } else {
                     arguments.put(arg, new InputArgument(null));
                 }
             }
-
         }
     }
 }

@@ -13,65 +13,82 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Commander {
-    private HashMap<String, Command> commands = new HashMap<>();
+    private final HashMap<String, Command> commands = new HashMap<>();
     private Command defaultCommand;
     private String appDescription = null;
 
     public Commander() {
-        Command helpCommand = new HelpCommand(this);
-        this.addCommand(helpCommand);
-        this.defaultCommand = helpCommand;
+        final Command helpCommand = new HelpCommand(this);
+        addCommand(helpCommand);
+        defaultCommand = helpCommand;
     }
 
-    public Commander addCommand(Command command) {
-        String commandName = command.getName();
+    public Commander addCommand(final Command command) {
+        final String commandName = command.getName();
+
         if (commands.containsKey(commandName)) {
             throw new RuntimeException(String.format("Command already registered: %s", commandName));
         }
-        this.commands.put(commandName, command);
+
+        commands.put(commandName, command);
         return this;
     }
 
-    public Commander removeCommand(Command command) {
-        String commandName = command.getName();
+    public Commander removeCommand(final Command command) {
+        final String commandName = command.getName();
+
         if (!commands.containsKey(commandName)) {
             return this;
         }
-        this.commands.remove(commandName);
+
+        commands.remove(commandName);
         return this;
     }
 
-    public boolean hasCommand(Command command){
-        return this.commands.containsKey(command.getName());
+    public boolean hasCommand(final Command command) {
+        return commands.containsKey(command.getName());
     }
 
-    public int execute(String[] args) throws NoCommandGivenException, CommandUnknownException, InputParseException, RuntimeArgumentException {
-        return this.execute(args, System.out);
+    public int execute(final String[] args)
+            throws NoCommandGivenException,
+            CommandUnknownException,
+            InputParseException,
+            RuntimeArgumentException {
+        return execute(args, System.out);
     }
 
-    public int execute(String[] args, PrintStream output) throws NoCommandGivenException, CommandUnknownException, InputParseException, RuntimeArgumentException {
+    public int execute(
+            final String[] args,
+            final PrintStream output
+    ) throws NoCommandGivenException,
+            CommandUnknownException,
+            InputParseException,
+            RuntimeArgumentException {
 
         String[] inputArgs = new String[0];
-        if (args.length > 0) {
+
+        if (0 < args.length) {
             inputArgs = Arrays.copyOfRange(args, 1, args.length);
         }
 
-        Input input = new Input(inputArgs);
+        final Input input = new Input(inputArgs);
 
-        if (args.length == 0) {
+        if (0 == args.length) {
             if (defaultCommand == null) {
                 throw new NoCommandGivenException();
             }
             return defaultCommand.execute(input, output);
         }
 
-        String invokedCommand = args[0];
+        final String invokedCommand = args[0];
 
         if (!commands.containsKey(invokedCommand)) {
             throw new CommandUnknownException();
         }
 
-        return commands.get(invokedCommand).execute(input, output);
+        return commands
+                .get(invokedCommand)
+                .execute(input, output);
     }
 
     public void printHelp() {
@@ -79,31 +96,32 @@ public class Commander {
     }
 
     public void printHelp(final PrintStream output) {
-        if (this.appDescription != null) {
+        if (appDescription != null) {
             output.println(this.appDescription);
         }
+
         output.println("Usage:");
 
-        for (Map.Entry<String, Command> commandEntry : commands.entrySet()) {
-            Command command = commandEntry.getValue();
-            String[] usage = command.getUsage();
-            String description = command.getDescription();
+        for (final Map.Entry<String, Command> commandEntry : commands.entrySet()) {
+            final Command command = commandEntry.getValue();
+            final String[] usage = command.getUsage();
+            final String description = command.getDescription();
 
             output.println("\t" + commandEntry.getKey().concat(": ").concat(description));
 
-            if (usage != null) {
-                for (String usageItem : usage) {
+            if (null != usage) {
+                for (final String usageItem : usage) {
                     output.println("\t\t" + usageItem);
                 }
             }
         }
     }
 
-    public void setDefaultCommand(Command defaultCommand) {
+    public void setDefaultCommand(final Command defaultCommand) {
         this.defaultCommand = defaultCommand;
     }
 
-    public void setAppDescription(String appDescription) {
+    public void setAppDescription(final String appDescription) {
         this.appDescription = appDescription;
     }
 }
